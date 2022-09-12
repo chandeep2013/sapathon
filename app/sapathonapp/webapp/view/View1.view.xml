@@ -1,0 +1,74 @@
+<mvc:View controllerName="com.sap.sapathonapp.controller.View1"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:viz="sap.viz.ui5.controls"
+	xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+	xmlns:viz.data="sap.viz.ui5.data">
+	<Page id="page" title="{i18n>title}">
+		<content>
+			<l:VerticalLayout id="containerLayout" width="100%">
+				<l:BlockLayout id="BlockLayout" background="Dashboard" >
+					<l:BlockLayoutRow accentCells="Accent1" height="20rem">
+						<l:BlockLayoutCell id="Accent1" width="1" title="">
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="CO2" frameType="OneByHalf" press="onPressCO2Tile">
+								<TileContent>
+									<ObjectStatus class="sapUiSmallMarginBottom" text="FootPrint Generated"  icon="sap-icon://sys-enter-2" state="Success" />
+								</TileContent>
+							</GenericTile>
+							<GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="KWH" frameType= "OneByHalf" press="onPressEnergyTile">
+								<TileContent>
+									<ObjectStatus class="sapUiSmallMarginBottom" text="Energy Consumed" icon="sap-icon://sys-enter-2" state="Success" />
+								</TileContent>
+							</GenericTile>
+						</l:BlockLayoutCell>
+						<l:BlockLayoutCell title="Summary View" width="3">
+                            <VBox id="idBox1">
+							<viz:Popover id="idPopOver1"></viz:Popover>
+							<viz:VizFrame id="idVizFrame1" uiConfig="{applicationSet:'fiori'}" vizProperties="{title:{text:'CO2 FootPrint'}}" width="100%" vizType='bar'>
+								<viz:dataset>
+									<viz.data:FlattenedDataset data="{oData>/CO2}">
+										<viz.data:dimensions>
+											<viz.data:DimensionDefinition name="programName" value="{oData>programName}" />
+										</viz.data:dimensions>
+										<viz.data:measures>
+											<viz.data:MeasureDefinition name="noOfTimesThePgmRunForTheDay" value="{oData>noOfTimesThePgmRunForTheDay}" />
+											<viz.data:MeasureDefinition name="noOfDaysThePgmRunForTheYear" value="{oData>noOfDaysThePgmRunForTheYear}" />
+										</viz.data:measures>
+									</viz.data:FlattenedDataset>
+								</viz:dataset>
+								<viz:feeds>
+									<viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure" values="noOfTimesThePgmRunForTheDay,noOfDaysThePgmRunForTheYear" />
+									<viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="programName" />
+								</viz:feeds>
+							</viz:VizFrame>
+                            </VBox>
+                            <VBox id="idBox2">
+                                <viz:Popover id="idPopOver2"></viz:Popover>
+										<!-- selectData="selectData" -->
+										<viz:VizFrame id="idVizFrame2" uiConfig="{applicationSet:'fiori'}" vizType="bar" vizProperties="{title:{text:'Energy Consumption'}}" width="100%">
+											<viz:dataset>
+												<viz.data:FlattenedDataset data="{oData>/Energy}">
+													<viz.data:dimensions>
+														<viz.data:DimensionDefinition name="programName" value="{oData>programName}"/>
+													</viz.data:dimensions>
+													<viz.data:measures>
+														<viz.data:MeasureDefinition name="noOfTimesThePgmRunForTheDay" value="{oData>noOfTimesThePgmRunForTheDay}"/>
+														<viz.data:MeasureDefinition name="noOfDaysThePgmRunForTheYear" value="{oData>noOfDaysThePgmRunForTheYear}"/>
+													</viz.data:measures>
+												</viz.data:FlattenedDataset>
+											</viz:dataset>
+											<viz:feeds>
+												<viz.feeds:FeedItem id="valueAxisFeed1" uid="valueAxis" type="Measure" values="noOfTimesThePgmRunForTheDay,noOfDaysThePgmRunForTheYear"/>
+												<viz.feeds:FeedItem id="feedCategoryAxis" uid="categoryAxis" type="Dimension" values="programName"/>
+											</viz:feeds>
+										</viz:VizFrame>
+                            </VBox>
+						</l:BlockLayoutCell>
+					</l:BlockLayoutRow>
+				</l:BlockLayout>
+			</l:VerticalLayout>
+		</content>
+	</Page>
+</mvc:View>

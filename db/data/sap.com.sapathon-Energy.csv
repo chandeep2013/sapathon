@@ -1,0 +1,3 @@
+ID;sapServer;usage;databaseServer;tcode;programName;activeUsersOfTheProgram;noOfTimesThePgmRunForTheDay;noOfDaysThePgmRunForTheYear;executionDateAndTime;currentRunningTimeinCPUSeconds;energyConsumptioninMWH;co2EmissioninMG;
+1;EP1;DEV;sqlite3;se01;tranport req;10;25;75;04-09-2022;25;750;745;
+2;EP1;DEV;hana;se38;Program;20;35;85;04-10-2022;35;850;845;

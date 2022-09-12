@@ -1,0 +1,73 @@
+<mvc:View controllerName="com.sap.sapathonapp.controller.View2" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m">
+    <Page title="View Details" showNavButton="true" navButtonPress="navButtonPress">
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <f:SimpleForm
+                    editable="false"
+                    layout="ResponsiveGridLayout"
+                    title="Details"
+                    labelSpanXL="3"
+                    labelSpanL="3"
+                    labelSpanM="3"
+                    labelSpanS="12"
+                    adjustLabelSpan="false"
+                    emptySpanXL="4"
+                    emptySpanL="4"
+                    emptySpanM="4"
+                    emptySpanS="0"
+                    columnsXL="1"
+                    columnsL="1"
+                    columnsM="1"
+                    singleContainerFullSize="false"
+                >
+                    <f:content>
+                        <Label text="Program Run For The Day" />
+                        <Text text="10" />
+                        <Label text="Program Run For The Year" />
+                        <Text text="280" />
+                        <Label text="Program Name" />
+                        <Text text="Test Program" />
+                        <Label text="Usage" />
+                        <Text text="Test Data" />
+                    </f:content>
+                </f:SimpleForm>
+                <Table id="idProductsTable" inset="false">
+                    <infoToolbar>
+                        <OverflowToolbar>
+                            <Label text="Information" />
+                        </OverflowToolbar>
+                    </infoToolbar>
+                    <columns>
+                        <Column>
+                            <Text text="Program Run For The Day" />
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Program Run For The Year" />
+                        </Column>
+                        <Column >
+                            <Text text="TCode" />
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true">
+                            <Text text="Program Name" />
+                        </Column>
+                        <Column minScreenWidth="Tablet" demandPopin="true" >
+                            <Text text="Usage" />
+                        </Column>
+                        
+                    </columns>
+                    <items>
+                        <ColumnListItem vAlign="Middle">
+                            <cells>
+                                <ObjectNumber number="10" />
+                                <ObjectNumber number="280" />
+                                <Text text="Test TCode" />
+                                <Text text="Test Program" />
+                                <Text text="Test Data" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>
